@@ -146,13 +146,13 @@
   }
 
   /* ---------- reveal + counters ---------- */
-  var revealSel = '.sec-head, .frame, .callout, .case-info, .case .tags, .tile, .facts, .ingredients, .post, .contact .huge, .contact .lead, .table, .contact .cta';
+  var revealSel = '.sec-head, .frame, .callout, .case-info, .case .tags, .tile, .map, .roar, .pack, .range, .facts, .ingredients, .post, .contact .huge, .contact .lead, .table, .contact .cta';
   $$(revealSel).forEach(function (n) { n.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
       if (!en.isIntersecting) return;
       var t = en.target, delay = 0;
-      if (t.classList.contains('tile')) delay = [].indexOf.call(t.parentNode.children, t) * 140;
+      if (t.classList.contains('tile') || t.classList.contains('map') || t.classList.contains('pack')) delay = [].indexOf.call(t.parentNode.children, t) * 120;
       setTimeout(function () { t.classList.add('in'); }, delay);
       io.unobserve(t);
     });
@@ -173,6 +173,7 @@
     vio.observe(f);
     var open = function () {
       if (!viewer.showModal) return;
+      viewer.classList.remove('img');
       viewerVid.src = $('source', f).getAttribute('src');
       viewer.showModal();
       viewerVid.play().catch(function () {});
@@ -193,6 +194,89 @@
   $('.close', viewer).addEventListener('click', closeViewer);
   viewer.addEventListener('click', function (ev) { if (ev.target === viewer) closeViewer(); });
   viewer.addEventListener('cancel', function (ev) { ev.preventDefault(); closeViewer(); });
+
+  /* ---------- maps: view switcher + click to enlarge ---------- */
+  var viewerImg = $('img', viewer);
+  $$('[data-map]').forEach(function (m) {
+    var imgs = $$('.shots img', m), btns = $$('.switch button', m);
+    btns.forEach(function (b, i) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.classList.toggle('on', x === b); });
+        imgs.forEach(function (im, j) { im.classList.toggle('on', j === i); });
+      });
+    });
+    $('.shots', m).addEventListener('click', function () {
+      if (!viewer.showModal) return;
+      var on = $('.shots img.on', m);
+      viewerImg.src = on.src; viewerImg.alt = on.alt;
+      viewer.classList.add('img');
+      viewer.showModal();
+    });
+  });
+
+  /* ---------- SFX players ---------- */
+  var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-stop" d="M7 7h10v10H7z"/></svg>';
+  var audio = new Audio(), current = null, peaks = {};
+  audio.preload = 'none';
+  function waveHTML(p) {
+    var bars = (p || new Array(48).fill(.35)).map(function (h) { return '<i style="--h:' + h + '"></i>'; }).join('');
+    return bars + '<div class="fill">' + bars + '</div>';
+  }
+  function fmt(d) { return d >= 1 ? d.toFixed(1) + 's' : Math.round(d * 1000) + 'ms'; }
+  function stop() {
+    audio.pause();
+    if (current) { current.el.classList.remove('playing'); current.btn.classList.remove('playing'); current.wave.style.setProperty('--p', '0%'); }
+    current = null;
+  }
+  function play(el, btn, wave, src, vol) {
+    var same = current && current.el === el;
+    stop();
+    if (same) return;
+    audio.src = src; audio.volume = vol || 0.8; audio.currentTime = 0;
+    audio.play().catch(function () {});
+    current = { el: el, btn: btn, wave: wave };
+    el.classList.add('playing'); btn.classList.add('playing');
+  }
+  audio.addEventListener('ended', stop);
+  (function tickAudio() {
+    if (current && audio.duration) current.wave.style.setProperty('--p', (audio.currentTime / audio.duration * 100) + '%');
+    requestAnimationFrame(tickAudio);
+  })();
+
+  $$('.sounds li').forEach(function (li) {
+    var file = li.dataset.src, name = li.textContent;
+    li.className = 'sound'; li.setAttribute('role', 'button'); li.tabIndex = 0;
+    li.setAttribute('aria-label', 'Play ' + name);
+    li.innerHTML = '<span class="pb">' + ICON + '</span><span class="nm"></span><div class="wave" data-wave="' + file + '"></div><span class="du"></span>';
+    $('.nm', li).textContent = name;
+    var go = function () { play(li, li, $('.wave', li), 'media/sfx/' + file, 0.8); };
+    li.addEventListener('click', go);
+    li.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); go(); } });
+  });
+  var roarBtn = $('.big-play'), roarWave = $('.roar .wave');
+  roarBtn.addEventListener('click', function () { play(roarBtn, roarBtn, roarWave, roarBtn.dataset.src, +roarBtn.dataset.vol); });
+
+  function drawWaves() {
+    $$('[data-wave]').forEach(function (w) {
+      var info = peaks[w.dataset.wave];
+      w.innerHTML = waveHTML(info && info.p);
+      var du = w.parentNode.querySelector('.du');
+      if (du && info) du.textContent = fmt(info.d);
+    });
+  }
+  drawWaves();
+  fetch('media/sfx/peaks.json').then(function (r) { return r.json(); }).then(function (j) { peaks = j; drawWaves(); }).catch(function () {});
+
+  /* ---------- Discord: copy the username ---------- */
+  var copiedMsg = $('.copied');
+  $$('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.dataset.copy;
+      var done = function () { copiedMsg.textContent = 'Copied "' + txt + '". Add me on Discord!'; setTimeout(function () { copiedMsg.textContent = ''; }, 3000); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, function () { copiedMsg.textContent = 'Discord: ' + txt; });
+      else copiedMsg.textContent = 'Discord: ' + txt;
+    });
+  });
 
   /* ---------- the soy sauce pour ---------- */
   var svg = $('#pour');
