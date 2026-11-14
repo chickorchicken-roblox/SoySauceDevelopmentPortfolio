@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SoySauceDevelopment | Game Developer</title>
-  <meta name="description" content="SoySauceDevelopment: games brewed slow, served hot. Gameplay systems, UI and 3D.">
-  <meta property="og:title" content="SoySauceDevelopment">
-  <meta property="og:description" content="Games brewed slow, served hot.">
+  <title>SoySauceDevelopment | Roblox UI Commissions</title>
+  <meta name="description" content="UI that gives your players justification to spend. Commissioned Roblox shop, crafting and HUD design by SoySauceDevelopment.">
+  <meta property="og:title" content="SoySauceDevelopment | Roblox UI Commissions">
+  <meta property="og:description" content="UI that gives your players justification to spend.">
+  <meta property="og:image" content="media/slime-shop.jpg">
   <meta name="theme-color" content="#140c08">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍶</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,20 +17,32 @@
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
 
   <!-- The soy sauce stream: built from the .pour-pt markers by script.js -->
   <svg id="pour" aria-hidden="true">
     <defs>
       <filter id="tipGlow" x="-200%" y="-200%" width="500%" height="500%">
-        <feGaussianBlur stdDeviation="6" result="b"/>
+        <feGaussianBlur stdDeviation="5" result="b"/>
         <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
+      <radialGradient id="dropShade" cx="35%" cy="30%" r="75%">
+        <stop offset="0" stop-color="#6b2f12"/><stop offset=".5" stop-color="#2a1207"/><stop offset="1" stop-color="#120602"/>
+      </radialGradient>
     </defs>
     <path id="track"/>
-    <path id="soyEdge"/>
-    <path id="soy"/>
-    <path id="soyHi"/>
-    <g id="tip"><ellipse rx="9" ry="11" class="drop"/><ellipse cx="-3" cy="-4" rx="2.4" ry="3.4" class="shine"/></g>
+    <path id="soyShadow" class="soy-line"/>
+    <path id="soyEdge" class="soy-line"/>
+    <path id="soy" class="soy-line"/>
+    <path id="soyHi" class="soy-line"/>
+    <path id="soyHi2" class="soy-line"/>
+    <g id="glints"></g>
+    <g id="drops"></g>
+    <g id="tip">
+      <path class="drop" d="M0 -16C5 -8 10 -2 10 4a10 10 0 0 1-20 0c0-6 5-12 10-20z"/>
+      <ellipse cx="-4" cy="2" rx="2.6" ry="4" class="shine"/>
+      <circle cx="3.5" cy="7" r="1.3" class="shine2"/>
+    </g>
   </svg>
 
   <header class="nav">
@@ -38,11 +51,11 @@
       <b>soysauce<span>.dev</span></b>
     </a>
     <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Menu</a>
+      <a href="#work">Work</a>
+      <a href="#sauce">Approach</a>
+      <a href="#process">Process</a>
       <a href="#skills">Ingredients</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn small">Hire me</a>
+      <a href="#contact" class="btn small">Commission me</a>
     </nav>
   </header>
 
@@ -50,212 +63,293 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="layer sky" aria-hidden="true"></div>
-      <div class="layer sun" data-speed="0.55" aria-hidden="true"></div>
-      <svg class="layer fuji" data-speed="0.42" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <div class="layer sun" data-speed="0.55" data-mouse="10" aria-hidden="true"><i></i></div>
+      <div class="layer clouds" data-speed="0.48" data-mouse="16" aria-hidden="true"><span style="--x:6%;--y:30%;--s:1"></span><span style="--x:62%;--y:18%;--s:.7"></span><span style="--x:80%;--y:44%;--s:1.2"></span></div>
+      <svg class="layer fuji" data-speed="0.42" data-mouse="22" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
         <g transform="translate(300 50)">
           <path d="M-500 400V300h500c200-20 360-40 520-70l140-110q60-30 120 0l140 110c160 30 320 50 520 60v110z" fill="#2b1b12"/>
-          <path d="M640 136l20-16q60-30 120 0l20 16-18 8-18-10-20 16-22-14-20 14-18-12-20 10z" fill="#efe2c8" opacity=".8"/>
+          <path d="M720 104l60 16 140 110c-90-16-170-40-230-80z" fill="#000" opacity=".18"/>
+          <path d="M640 136l20-16q60-30 120 0l20 16-18 8-18-10-20 16-22-14-20 14-18-12-20 10z" fill="#efe2c8" opacity=".85"/>
         </g>
       </svg>
-      <svg class="layer town far" data-speed="0.3" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
-      <svg class="layer town near" data-speed="0.16" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
-      <div class="lanterns" data-speed="0.08" aria-hidden="true">
-        <span class="lantern" style="--x:24%;--len:16px;--d:0s"></span>
-        <span class="lantern" style="--x:33%;--len:44px;--d:-1.3s"></span>
-        <span class="lantern sm" style="--x:42%;--len:6px;--d:-2.1s"></span>
-        <span class="lantern sm" style="--x:49%;--len:30px;--d:-.4s"></span>
+      <div class="layer mist" data-speed="0.36" aria-hidden="true"></div>
+      <svg class="layer town far" data-speed="0.3" data-mouse="30" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <svg class="layer town near" data-speed="0.16" data-mouse="44" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+      <div class="lanterns" data-speed="0.08" data-mouse="60" aria-hidden="true">
+        <span class="lantern" style="--x:95%;--len:250px;--d:0s"></span>
+        <span class="lantern sm" style="--x:63%;--len:470px;--d:-1.3s"></span>
+        <span class="lantern sm" style="--x:89%;--len:430px;--d:-2.1s"></span>
       </div>
       <div class="embers" aria-hidden="true"></div>
-      <p class="vert" aria-hidden="true">醤油開発</p>
+      <p class="vert" aria-hidden="true">醤油開発 · 注文受付中</p>
 
       <div class="hero-copy">
-        <p class="hand eyebrow"><i></i> brewing games since 2023</p>
-        <h1><span>SoySauce</span><span>Development</span></h1>
-        <p class="sub">Games brewed slow. <em>Served hot.</em></p>
-        <p class="lead">Gameplay systems, crafted UI and worlds that feel good to play.</p>
+        <p class="hand eyebrow"><i></i> commissions open · Roblox UI by SoySauceDevelopment</p>
+        <h1>
+          <span class="l1">UI That Gives Your Players</span>
+          <span class="l2" id="coat">JUSTIFICATION</span>
+          <span class="l3">To Spend<b class="dot">.</b></span>
+        </h1>
+        <p class="lead">Shops, crafting menus and HUDs for Roblox games. Every offer explains its value, and every button feels good to press.</p>
         <div class="cta">
-          <a class="btn" href="#projects">See the menu</a>
-          <a class="btn ghost" href="#contact">Get in touch</a>
+          <a class="btn red" href="#contact">Commission me</a>
+          <a class="btn ghost" href="#work">See the work</a>
         </div>
-        <p class="hint mono">scroll to pour ↓</p>
+        <ul class="chips mono">
+          <li>Shops &amp; gamepasses</li><li>Crafting menus</li><li>HUDs</li><li>PC · Mobile · Console</li>
+        </ul>
       </div>
 
       <div class="bottle-wrap" aria-hidden="true">
+        <div class="bottle-shadow"></div>
         <svg id="bottle" viewBox="0 0 120 280">
           <defs>
             <clipPath id="bodyClip">
               <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z"/>
             </clipPath>
+            <linearGradient id="glass" x1="0" x2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".25" stop-color="#fff" stop-opacity=".04"/>
+              <stop offset=".8" stop-color="#fff" stop-opacity=".02"/><stop offset="1" stop-color="#fff" stop-opacity=".16"/>
+            </linearGradient>
+            <linearGradient id="capShade" x1="0" x2="1">
+              <stop offset="0" stop-color="#e8483a"/><stop offset=".45" stop-color="#c8281e"/><stop offset="1" stop-color="#8a1810"/>
+            </linearGradient>
           </defs>
-          <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z" fill="rgba(255,236,210,.10)"/>
+          <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z" fill="rgba(255,236,210,.08)"/>
           <g clip-path="url(#bodyClip)">
             <g id="liquid">
-              <rect x="-300" y="150" width="720" height="720" fill="#2a1207"/>
-              <rect id="surface" x="-300" y="150" width="720" height="3" fill="#8a4a22" opacity=".8"/>
+              <rect id="liqBody" x="-300" y="150" width="720" height="720" fill="#2a1207"/>
+              <rect id="liqDeep" x="-300" y="190" width="720" height="720" fill="#160801" opacity=".55"/>
+              <rect id="surface" x="-300" y="150" width="720" height="4" fill="#b0642e" opacity=".85"/>
+              <g id="bubbles" fill="none" stroke="#d08a52" stroke-opacity=".55">
+                <circle cx="40" cy="240" r="2.2"/><circle cx="70" cy="255" r="1.5"/><circle cx="58" cy="225" r="1.2"/><circle cx="84" cy="236" r="1.8"/>
+              </g>
             </g>
           </g>
-          <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z" fill="none" stroke="rgba(255,236,210,.45)" stroke-width="2"/>
-          <path d="M20 150c-4 20-5 50-4 90" stroke="#fff" stroke-opacity=".35" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <rect x="40" y="176" width="40" height="66" rx="6" fill="#efe2c8"/>
-          <rect x="44" y="180" width="32" height="58" rx="3" fill="none" stroke="#c8281e" stroke-width="1.5"/>
-          <text x="60" y="206" text-anchor="middle" font-size="20" fill="#c8281e" font-family="serif" font-weight="700">醤</text>
-          <text x="60" y="230" text-anchor="middle" font-size="20" fill="#c8281e" font-family="serif" font-weight="700">油</text>
+          <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z" fill="url(#glass)"/>
+          <path d="M38 84h44l2 24c24 22 28 52 28 92v52q0 20-20 20H28q-20 0-20-20v-52c0-40 4-70 28-92z" fill="none" stroke="rgba(255,236,210,.5)" stroke-width="2"/>
+          <path d="M42 90h36l1 18c22 20 26 50 26 90v54q0 14-14 14H29q-14 0-14-14v-54c0-40 4-70 26-90z" fill="none" stroke="rgba(255,236,210,.12)" stroke-width="1.5"/>
+          <path d="M20 150c-4 20-5 50-4 90" stroke="#fff" stroke-opacity=".4" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M27 132c-2 4-3 8-4 12" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M101 170c2 22 2 50 1 76" stroke="#fff" stroke-opacity=".12" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <g fill="#fff" opacity=".35"><circle cx="92" cy="150" r="1.6"/><circle cx="96" cy="160" r="1"/><circle cx="24" cy="252" r="1.3"/><circle cx="88" cy="262" r="1.1"/></g>
+          <rect x="38" y="174" width="44" height="72" rx="6" fill="#efe2c8"/>
+          <rect x="38" y="174" width="44" height="10" rx="5" fill="#c8281e"/>
+          <rect x="42" y="187" width="36" height="54" rx="3" fill="none" stroke="#c8281e" stroke-width="1.3"/>
+          <text x="60" y="208" text-anchor="middle" font-size="18" fill="#c8281e" font-family="serif" font-weight="700">醤</text>
+          <text x="60" y="229" text-anchor="middle" font-size="18" fill="#c8281e" font-family="serif" font-weight="700">油</text>
+          <text x="60" y="238" text-anchor="middle" font-size="4.6" fill="#24160e" font-family="monospace" letter-spacing=".5">SOYSAUCE DEV</text>
           <rect x="24" y="70" width="72" height="16" rx="5" fill="#9e1d15"/>
-          <path d="M28 72c0-28 12-42 32-42s32 14 32 42z" fill="#c8281e"/>
-          <path d="M40 54c4-10 10-15 18-16" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-linecap="round" fill="none"/>
-          <path d="M54 32l2-26q4-6 8 0l2 26z" fill="#c8281e"/>
+          <g stroke="#6e130d" stroke-width="1.4"><path d="M32 72v12M40 72v12M48 72v12M56 72v12M64 72v12M72 72v12M80 72v12M88 72v12"/></g>
+          <path d="M28 72c0-28 12-42 32-42s32 14 32 42z" fill="url(#capShade)"/>
+          <path d="M40 54c4-10 10-15 18-16" stroke="#fff" stroke-opacity=".4" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M54 32l2-26q4-6 8 0l2 26z" fill="url(#capShade)"/>
+          <path d="M57 26l1-17" stroke="#fff" stroke-opacity=".35" stroke-width="1.6" stroke-linecap="round"/>
           <circle id="nozzle" cx="60" cy="3" r="1" fill="none"/>
         </svg>
       </div>
 
-      <i class="pour-pt" style="left:74%;top:96%"></i>
+      <i class="pour-pt" style="left:76%;top:97%"></i>
     </section>
 
-    <!-- ============ ABOUT ============ -->
-    <section id="about" class="about">
-      <span class="kanji" aria-hidden="true">調理</span>
-      <div class="wrap">
-        <article class="note">
-          <span class="tape" aria-hidden="true"></span>
-          <h2 class="hand-title">the recipe</h2>
-          <p class="big-hand">Hi, I'm <b>SoySauceDevelopment</b>. I make games and the systems behind them.</p>
-          <p>I like projects where code, art and game feel all come together. Replace this with your story: how you started, what you love building, and what's cooking next.</p>
-          <ul class="steps hand">
-            <li><span>1</span> Start with a fun core loop</li>
-            <li><span>2</span> Add clean, reactive UI</li>
-            <li><span>3</span> Season with polish until it feels right</li>
-          </ul>
-        </article>
+    <!-- ============ MARQUEE ============ -->
+    <div class="ribbons" aria-hidden="true">
+      <div class="ribbon back"><div class="track"><span>醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · </span><span>醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · 醤油 · 注文 · デザイン · </span></div></div>
+      <div class="ribbon front"><div class="track"><span>SHOPS ✦ GAMEPASSES ✦ CRAFTING MENUS ✦ INVENTORIES ✦ HUDS ✦ TOOLTIPS ✦ TUTORIALS ✦ </span><span>SHOPS ✦ GAMEPASSES ✦ CRAFTING MENUS ✦ INVENTORIES ✦ HUDS ✦ TOOLTIPS ✦ TUTORIALS ✦ </span></div></div>
+    </div>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" class="work">
+      <svg class="drip-band" data-seed="11" aria-hidden="true"></svg>
+      <div class="decor" aria-hidden="true">
+        <span class="bean" data-depth=".35" style="left:6%;top:14%;--s:1.4;--r:30deg"></span>
+        <span class="bean far" data-depth=".15" style="left:90%;top:22%;--s:.8;--r:-20deg"></span>
+        <span class="splat" data-depth=".25" data-seed="3" style="left:92%;top:58%;--s:1"></span>
+        <span class="bean near" data-depth=".6" style="left:2%;top:66%;--s:2.2;--r:70deg"></span>
+        <span class="bean far" data-depth=".12" style="left:48%;top:88%;--s:.7;--r:10deg"></span>
       </div>
-      <i class="pour-pt" style="left:90%;top:45%"></i>
-    </section>
-
-    <!-- ============ STATS ============ -->
-    <section class="stats">
-      <div class="wrap">
-        <div class="stat"><b data-count="100" data-suffix="k+">0</b><span class="hand">plays served</span></div>
-        <div class="stat"><b data-count="12">0</b><span class="hand">projects shipped</span></div>
-        <div class="stat"><b data-count="3" data-suffix=" yrs">0</b><span class="hand">aged in the barrel</span></div>
-      </div>
-      <i class="pour-pt" style="left:50%;top:70%"></i>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="projects">
-      <span class="kanji" aria-hidden="true">品書</span>
+      <span class="kanji" aria-hidden="true">作品</span>
       <div class="wrap">
         <header class="sec-head">
-          <p class="mono label">01 / on the menu</p>
-          <h2>Today's specials</h2>
-          <p class="lead">Every project is cooked from scratch. Tap a board for the full recipe.</p>
-          <div class="filters" role="group" aria-label="Filter projects">
-            <button class="chip active" data-f="all">All</button>
-            <button class="chip" data-f="game">Games</button>
-            <button class="chip" data-f="ui">UI</button>
-            <button class="chip" data-f="3d">3D</button>
-          </div>
+          <p class="mono label">01 / served commissions</p>
+          <h2>Fresh off<br>the stove</h2>
+          <p class="lead">Real UI I built for client games. Every screen is designed so players know what they're getting and why it's worth it.</p>
         </header>
 
-        <div class="menu">
-          <div class="beam" aria-hidden="true"><span class="lantern sm" style="--x:12%;--len:18px;--d:-.6s"></span><span class="lantern sm" style="--x:88%;--len:18px;--d:-1.8s"></span></div>
-          <div class="boards">
-            <article class="board" data-cat="game" style="--d:0s">
-              <div class="plank">
-                <div class="shot wave red"><span>01</span></div>
-                <h3>Project One</h3>
-                <p class="hand">A one-line pitch of your best game. What is it, and what makes it fun?</p>
-                <ul class="tags"><li>Luau</li><li>Systems</li><li>Multiplayer</li></ul>
-                <a href="#" class="more">Read the recipe →</a>
-              </div>
-            </article>
-            <article class="board" data-cat="ui" style="--d:-1.2s">
-              <div class="plank">
-                <div class="shot wave amber"><span>02</span></div>
-                <h3>Project Two</h3>
-                <p class="hand">A UI system you're proud of: reactive animations, mobile layouts, shop design.</p>
-                <ul class="tags"><li>UI/UX</li><li>Animation</li><li>Mobile</li></ul>
-                <a href="#" class="more">Read the recipe →</a>
-              </div>
-            </article>
-            <article class="board" data-cat="3d" style="--d:-2.4s">
-              <div class="plank">
-                <div class="shot wave green"><span>03</span></div>
-                <h3>Project Three</h3>
-                <p class="hand">A map, model set or environment. Show before/after shots and your tools.</p>
-                <ul class="tags"><li>Blender</li><li>Modeling</li><li>Maps</li></ul>
-                <a href="#" class="more">Read the recipe →</a>
-              </div>
-            </article>
-            <article class="board" data-cat="game" style="--d:-.7s">
-              <div class="plank">
-                <div class="shot wave ink"><span>04</span></div>
-                <h3>Project Four</h3>
-                <p class="hand">Another game, prototype or jam entry. The problem, your role, the result.</p>
-                <ul class="tags"><li>Combat</li><li>Data saving</li><li>Game jam</li></ul>
-                <a href="#" class="more">Read the recipe →</a>
-              </div>
-            </article>
+        <article class="case">
+          <div class="frame" data-video>
+            <div class="frame-bar"><i></i><i></i><i></i><span class="mono">commission_01 · shop_ui.mp4</span><button class="expand" aria-label="Open video larger">⤢</button></div>
+            <div class="screen"><video muted loop playsinline preload="none" poster="media/slime-shop.jpg"><source src="media/slime-shop.mp4" type="video/mp4"></video><span class="live mono">● playing</span></div>
+            <span class="tape t-l"></span><span class="tape t-r"></span>
+            <p class="callout hand" style="--x:-4%;--y:22%;--r:-6deg">struck-out prices<br>do the value math ↘</p>
+            <p class="callout hand right" style="--x:96%;--y:70%;--r:5deg">↙ a gift button on<br>every single offer</p>
           </div>
+          <div class="case-info">
+            <div class="case-title">
+              <p class="mono label">Shop &amp; monetization</p>
+              <h3>The Slime Shop</h3>
+              <p>A storybook shop where every offer explains itself. Players see what they get, what it's worth, and why this one is the best deal.</p>
+              <p class="why"><b>Why players spend:</b> the value is worked out for them, and the best deal is impossible to miss.</p>
+            </div>
+            <ul class="built">
+              <li>Tabbed <b>Deals / Jewels / Packs / Passes</b> book layout</li>
+              <li>Limited starter pack with a countdown and a price ladder</li>
+              <li>Anchor pricing: struck-out prices and "2.4x the jewels" lines</li>
+              <li><b>Best value</b> and <b>Most jewels</b> ribbons to guide the choice</li>
+              <li>Gamepass bundle with "Save R$198" and owned states</li>
+            </ul>
+          </div>
+          <ul class="tags"><li>Shop UI</li><li>Monetization</li><li>Gamepasses</li><li>Mobile</li></ul>
+        </article>
+
+        <article class="case flip">
+          <div class="frame" data-video>
+            <div class="frame-bar"><i></i><i></i><i></i><span class="mono">commission_02 · forge_ui.mp4</span><button class="expand" aria-label="Open video larger">⤢</button></div>
+            <div class="screen"><video muted loop playsinline preload="none" poster="media/forge-ui.jpg"><source src="media/forge-ui.mp4" type="video/mp4"></video><span class="live mono">● playing</span></div>
+            <span class="tape t-l"></span><span class="tape t-r"></span>
+            <p class="callout hand right" style="--x:96%;--y:18%;--r:6deg">↙ every material on<br>the bench: have / need</p>
+            <p class="callout hand" style="--x:-4%;--y:74%;--r:-4deg">the upsell sits right<br>above the button ↗</p>
+          </div>
+          <div class="case-info">
+            <div class="case-title">
+              <p class="mono label">Crafting &amp; forge</p>
+              <h3>The Mountain Forge</h3>
+              <p>A forge menu that makes progression feel real. You can see every material on the workbench before you hammer it together.</p>
+              <p class="why"><b>Why players spend:</b> they always know what they're one step away from, and the faster option is right where they're already looking.</p>
+            </div>
+            <ul class="built">
+              <li>Recipe list with ready states and craft timers</li>
+              <li>Ingredient workbench showing <b>have / need</b> counts</li>
+              <li>Parchment tooltips with rarity, stats and where to find items</li>
+              <li>Requirement checklist: rank and free forge slot</li>
+              <li><b>Quick Forge −30% time</b> upsell above the main button</li>
+            </ul>
+          </div>
+          <ul class="tags"><li>Crafting UI</li><li>Tooltips</li><li>Progression</li><li>Upsell</li></ul>
+        </article>
+
+        <article class="case">
+          <div class="frame" data-video>
+            <div class="frame-bar"><i></i><i></i><i></i><span class="mono">commission_03 · workshop_ui.mp4</span><button class="expand" aria-label="Open video larger">⤢</button></div>
+            <div class="screen"><video muted loop playsinline preload="none" poster="media/papercraft-ui.jpg"><source src="media/papercraft-ui.mp4" type="video/mp4"></video><span class="live mono">● playing</span></div>
+            <span class="tape t-l"></span><span class="tape t-r"></span>
+            <p class="callout hand" style="--x:-4%;--y:20%;--r:-5deg">free swaps first,<br>then a paid reroll ↘</p>
+            <p class="callout hand right" style="--x:96%;--y:72%;--r:4deg">↙ odds shown up front,<br>so rolls feel fair</p>
+          </div>
+          <div class="case-info">
+            <div class="case-title">
+              <p class="mono label">Jobs, rolls &amp; stations</p>
+              <h3>The Paper Workshop</h3>
+              <p>A cozy craft game where every menu looks cut, taped and pinned by hand, from the job board to the paint station.</p>
+              <p class="why"><b>Why players spend:</b> swaps, rolls and finishes are small choices made a hundred times. Clear odds and a free first try keep players coming back.</p>
+            </div>
+            <ul class="built">
+              <li>Commission board with Easy / Standard / Dream jobs and payouts</li>
+              <li>Free daily swaps, then a <b>paid reroll</b></li>
+              <li>Finishing Station with <b>clear odds</b> for every finish</li>
+              <li>Roll flow with a Golden Hour event banner</li>
+              <li>Paint station and HUD: Upgrade, Jobs, Book, Shop, Settings</li>
+            </ul>
+          </div>
+          <ul class="tags"><li>HUD</li><li>Rolls</li><li>Job board</li><li>Papercraft</li></ul>
+        </article>
+      </div>
+      <i class="pour-pt" style="left:3%;top:9%"></i>
+      <i class="pour-pt" style="left:97%;top:38%"></i>
+      <i class="pour-pt" style="left:3%;top:68%"></i>
+      <i class="pour-pt" style="left:55%;top:100%"></i>
+    </section>
+
+    <!-- ============ SECRET SAUCE ============ -->
+    <section id="sauce" class="sauce">
+      <div class="decor" aria-hidden="true">
+        <span class="splat" data-depth=".3" data-seed="8" style="left:4%;top:30%;--s:1.3"></span>
+        <span class="bean" data-depth=".4" style="left:88%;top:12%;--s:1.2;--r:-40deg"></span>
+      </div>
+      <span class="kanji" aria-hidden="true">秘伝</span>
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="mono label">02 / the secret sauce</p>
+          <h2>Why it sells</h2>
+          <p class="lead">Players don't spend on pretty UI. They spend when the UI gives them a reason. I build in three.</p>
+        </header>
+        <div class="dishes">
+          <article class="tile">
+            <div class="saucer"><span>1</span></div>
+            <h3>Anchor the value</h3>
+            <p>Struck-out prices, multipliers and "best value" ribbons do the math, so players never have to.</p>
+          </article>
+          <article class="tile">
+            <div class="saucer"><span>2</span></div>
+            <h3>Show the reward</h3>
+            <p>Big item art, sunbursts and have/need counts make the thing feel real before it's bought.</p>
+          </article>
+          <article class="tile">
+            <div class="saucer"><span>3</span></div>
+            <h3>Make it feel good</h3>
+            <p>Buttons that squash, numbers that count up, menus that open like real objects. UI that feels good gets opened again.</p>
+          </article>
         </div>
       </div>
-      <i class="pour-pt" style="left:3%;top:30%"></i>
-      <i class="pour-pt" style="left:97%;top:72%"></i>
-      <i class="pour-pt" style="left:60%;top:100%"></i>
+      <i class="pour-pt" style="left:94%;top:50%"></i>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="timeline">
+      <span class="kanji" aria-hidden="true">熟成</span>
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="mono label">03 / how a commission brews</p>
+          <h2>Brewed in four steps</h2>
+        </header>
+        <div class="posts">
+          <div class="post l"><b>01 Steep</b><span>Your brief, references and the screens you need. You get a quote and a timeline.</span></div>
+          <div class="post r"><b>02 Ferment</b><span>A look-only prototype of one key screen, so we agree on the style before building.</span></div>
+          <div class="post l"><b>03 Press</b><span>Every screen built, mobile-first, with animations and states.</span></div>
+          <div class="post r"><b>04 Bottle</b><span>Polish, revisions and a clean handoff your team can extend.</span></div>
+        </div>
+      </div>
+      <i class="pour-pt" style="left:56%;top:22%"></i>
+      <i class="pour-pt" style="left:44%;top:88%"></i>
     </section>
 
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="skills">
+      <div class="decor" aria-hidden="true">
+        <span class="bean near" data-depth=".55" style="left:92%;top:70%;--s:2;--r:-60deg"></span>
+      </div>
       <span class="kanji" aria-hidden="true">材料</span>
       <div class="wrap">
         <header class="sec-head">
-          <p class="mono label">02 / ingredients</p>
+          <p class="mono label">04 / ingredients</p>
           <h2>What goes in</h2>
         </header>
         <div class="skill-grid">
           <div class="facts">
             <h3>Nutrition Facts</h3>
-            <p class="serv">Serving size <b>1 developer</b></p>
+            <p class="serv">Serving size <b>1 commission</b></p>
             <div class="rule thick"></div>
-            <div class="cal"><span>Calories</span><b>∞ ideas</b></div>
+            <div class="cal"><span>Conversion</span><b>↑ high</b></div>
             <div class="rule mid"></div>
             <p class="dv">% Daily Value*</p>
-            <div class="nrow"><div><b>Scripting</b> Luau, Lua</div><b>90%</b><i style="--w:90%"></i></div>
-            <div class="nrow"><div><b>Game systems</b> loops, data</div><b>85%</b><i style="--w:85%"></i></div>
-            <div class="nrow"><div><b>UI / UX</b> reactive, mobile</div><b>80%</b><i style="--w:80%"></i></div>
-            <div class="nrow"><div><b>3D modeling</b> Blender</div><b>70%</b><i style="--w:70%"></i></div>
-            <div class="nrow"><div><b>Web</b> HTML, CSS, JS</div><b>65%</b><i style="--w:65%"></i></div>
+            <div class="nrow"><div><b>Shop UI</b> monetization</div><b>95%</b><i style="--w:95%"></i></div>
+            <div class="nrow"><div><b>Menus &amp; HUDs</b> crafting, inventory</div><b>90%</b><i style="--w:90%"></i></div>
+            <div class="nrow"><div><b>Animation</b> juice, feedback</div><b>85%</b><i style="--w:85%"></i></div>
+            <div class="nrow"><div><b>Layouts</b> PC, mobile, console</div><b>85%</b><i style="--w:85%"></i></div>
+            <div class="nrow"><div><b>Scripting</b> Luau</div><b>70%</b><i style="--w:70%"></i></div>
             <div class="rule thick"></div>
-            <p class="foot">* Percent Daily Values are based on a 2,000 line diet. May contain traces of caffeine.</p>
+            <p class="foot">* Percent Daily Values are based on a 2,000 Robux diet. May contain traces of late nights.</p>
           </div>
           <div class="ingredients">
-            <p class="ing"><b>INGREDIENTS:</b> ROBLOX STUDIO, BLENDER, ROJO, GIT, VS CODE, FIGMA, LATE NIGHTS, AND A GENEROUS SPLASH OF SOY SAUCE.</p>
+            <p class="ing"><b>INGREDIENTS:</b> ROBLOX STUDIO, FIGMA, BLENDER, LUAU, A STRICT EYE FOR SPACING, ANIMATION THAT FEELS GOOD, AND A GENEROUS SPLASH OF SOY SAUCE.</p>
             <ul class="tickets">
-              <li>Roblox Studio</li><li>Blender</li><li>Rojo</li><li>Git</li><li>VS Code</li><li>Figma</li>
+              <li>Roblox Studio</li><li>Figma</li><li>Blender</li><li>Luau</li><li>Rojo</li><li>Git</li>
             </ul>
-            <p class="hand aside">↖ fresh daily, never microwaved</p>
+            <p class="hand aside">↖ made fresh for every game, never a template</p>
           </div>
         </div>
       </div>
       <i class="pour-pt" style="left:52%;top:50%"></i>
-    </section>
-
-    <!-- ============ TIMELINE ============ -->
-    <section class="timeline">
-      <span class="kanji" aria-hidden="true">熟成</span>
-      <div class="wrap">
-        <header class="sec-head center">
-          <p class="mono label">03 / the brew</p>
-          <h2>Aged to perfection</h2>
-        </header>
-        <div class="posts">
-          <div class="post l"><b>2023</b><span>Started building games</span></div>
-          <div class="post r"><b>2024</b><span>Shipped my first public project</span></div>
-          <div class="post l"><b>2025</b><span>Grew my first big audience</span></div>
-          <div class="post r"><b>Now</b><span>Something new is simmering</span></div>
-        </div>
-      </div>
-      <i class="pour-pt" style="left:56%;top:22%"></i>
-      <i class="pour-pt" style="left:44%;top:88%"></i>
     </section>
 
     <!-- ============ CONTACT ============ -->
@@ -263,9 +357,9 @@
       <i class="pour-pt" style="left:88%;top:8%"></i>
       <i class="pour-pt" style="left:84%;top:52%"></i>
       <div class="wrap">
-        <p class="mono label">04 / take a seat</p>
-        <h2 class="huge">Pull up<br>a seat.</h2>
-        <p class="lead">Want to work together or just say hi? The kitchen's open.</p>
+        <p class="mono label">05 / take a seat</p>
+        <h2 class="huge">Open for<br>commissions.</h2>
+        <p class="lead">Tell me about your game, the screens you need and your deadline. I'll reply with a plan and a quote.</p>
         <div class="table">
           <div class="bowl" aria-hidden="true">
             <span class="steam s1"></span><span class="steam s2"></span><span class="steam s3"></span>
@@ -273,19 +367,26 @@
           </div>
           <div class="dish" aria-hidden="true">
             <svg viewBox="0 0 200 80">
-              <ellipse cx="100" cy="46" rx="96" ry="30" fill="#e9dcc3"/>
+              <ellipse cx="100" cy="48" rx="96" ry="30" fill="#000" opacity=".25"/>
+              <ellipse cx="100" cy="46" rx="96" ry="30" fill="#e2d3b6"/>
               <ellipse cx="100" cy="40" rx="96" ry="30" fill="#f6ecd8"/>
-              <ellipse cx="100" cy="40" rx="70" ry="20" fill="#d9c9ab"/>
-              <ellipse id="dishFill" cx="100" cy="41" rx="66" ry="18" fill="#2a1207"/>
-              <ellipse id="dishShine" cx="80" cy="35" rx="18" ry="4" fill="#fff" opacity="0"/>
+              <ellipse cx="100" cy="40" rx="86" ry="25" fill="none" stroke="#2c3d55" stroke-width="1.5" opacity=".5"/>
+              <ellipse cx="100" cy="40" rx="70" ry="20" fill="#d4c3a3"/>
+              <g id="dishFillG">
+                <ellipse cx="100" cy="41" rx="66" ry="18" fill="#2a1207"/>
+                <ellipse cx="100" cy="42" rx="66" ry="18" fill="none" stroke="#7a3a17" stroke-width="2.5"/>
+                <ellipse class="ripple r1" cx="132" cy="38" rx="10" ry="3" fill="none" stroke="#b0642e" stroke-width="1"/>
+                <ellipse class="ripple r2" cx="132" cy="38" rx="10" ry="3" fill="none" stroke="#b0642e" stroke-width="1"/>
+                <ellipse cx="78" cy="35" rx="20" ry="4" fill="#fff" opacity=".28"/>
+              </g>
             </svg>
             <i class="pour-pt end"></i>
           </div>
           <div class="sticks" aria-hidden="true"><span></span><span></span><i></i></div>
         </div>
         <div class="cta center">
-          <a class="btn" href="mailto:lambchopmmvii@gmail.com">Email me</a>
-          <a class="btn ghost" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn red" href="mailto:lambchopmmvii@gmail.com?subject=UI%20commission">Email me</a>
+          <a class="btn ghost" href="#work">See the work again</a>
         </div>
       </div>
     </section>
@@ -295,6 +396,11 @@
     <svg class="town foot" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
     <p>© <span id="year"></span> SoySauceDevelopment. Brewed by hand.</p>
   </footer>
+
+  <dialog id="viewer" aria-label="Video viewer">
+    <button class="close" aria-label="Close">✕</button>
+    <video controls muted loop playsinline></video>
+  </dialog>
 
   <script src="script.js"></script>
 </body>
