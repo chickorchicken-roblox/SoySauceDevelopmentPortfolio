@@ -469,3 +469,5 @@ footer p{position:relative;z-index:1}
   .sound{grid-template-columns:40px minmax(0,1fr) auto}
   .sound .wave{display:none}
 }
+
+.screen.wide16{aspect-ratio:16/9}
