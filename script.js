@@ -146,7 +146,7 @@
   }
 
   /* ---------- reveal + counters ---------- */
-  var revealSel = '.sec-head, .frame, .callout, .case-info, .case .tags, .tile, .map, .roar, .pack, .range, .facts, .ingredients, .post, .contact .huge, .contact .lead, .table, .contact .cta';
+  var revealSel = '.sec-head, .frame, .callout, .case-info, .case .tags, .tile, .map, .showcase, .roar, .pack, .range, .facts, .ingredients, .post, .contact .huge, .contact .lead, .table, .contact .cta';
   $$(revealSel).forEach(function (n) { n.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
@@ -212,6 +212,40 @@
       viewer.classList.add('img');
       viewer.showModal();
     });
+  });
+
+  /* ---------- models showcase: tabs, arrows, swipe, zoom ---------- */
+  $$('[data-showcase]').forEach(function (sc) {
+    var tabs = $$('.tabs button', sc), slides = $$('.slide', sc), num = $('.count span', sc), idx = 0;
+    function show(i) {
+      idx = (i + slides.length) % slides.length;
+      tabs.forEach(function (t, j) { t.classList.toggle('on', j === idx); t.setAttribute('aria-selected', j === idx); });
+      slides.forEach(function (s, j) { s.classList.toggle('on', j === idx); });
+      num.textContent = ('0' + (idx + 1)).slice(-2);
+    }
+    tabs.forEach(function (t, j) { t.addEventListener('click', function () { show(j); }); });
+    $('.prev', sc).addEventListener('click', function () { show(idx - 1); });
+    $('.next', sc).addEventListener('click', function () { show(idx + 1); });
+    sc.addEventListener('keydown', function (ev) {
+      if (ev.key === 'ArrowLeft') show(idx - 1);
+      if (ev.key === 'ArrowRight') show(idx + 1);
+    });
+    var sx = null, stage = $('.stage', sc);
+    stage.addEventListener('touchstart', function (ev) { sx = ev.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', function (ev) {
+      if (sx === null) return;
+      var dx = ev.changedTouches[0].clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
+    });
+    $$('.slide .main', sc).forEach(function (im) {
+      im.addEventListener('click', function () {
+        if (!viewer.showModal) return;
+        viewerImg.src = im.src; viewerImg.alt = im.alt;
+        viewer.classList.add('img');
+        viewer.showModal();
+      });
+    });
+    show(0);
   });
 
   /* ---------- SFX players ---------- */
