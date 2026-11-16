@@ -538,3 +538,8 @@ footer p{position:relative;z-index:1}
   .nav-arrow.prev{left:8px}.nav-arrow.next{right:8px}
   .tabs button{font-size:.8rem;padding:7px 12px 7px 20px}
 }
+
+/* secret slime: flicker between its two colour states */
+.slide.flicker .main.alt{opacity:0;animation:glitchSwap 2.4s steps(1) infinite;pointer-events:none}
+@keyframes glitchSwap{0%,38%{opacity:0}40%,44%{opacity:1}46%,52%{opacity:0}54%,90%{opacity:1}92%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.slide.flicker .main.alt{display:none}}
