@@ -245,6 +245,17 @@
         viewer.showModal();
       });
     });
+    // slides with their own render switch (e.g. Night / Day / Clay)
+    $$('.slide.multi', sc).forEach(function (sl) {
+      var vs = $$('.main.v', sl), bs = $$('.vswitch button', sl), blur = $('.blur', sl);
+      bs.forEach(function (b, i) {
+        b.addEventListener('click', function () {
+          bs.forEach(function (x) { x.classList.toggle('on', x === b); });
+          vs.forEach(function (v, j) { v.classList.toggle('on', j === i); });
+          blur.src = vs[i].src;
+        });
+      });
+    });
     show(0);
   });
 

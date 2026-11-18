@@ -545,3 +545,12 @@ footer p{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.slide.flicker .main.alt{display:none}}
 
 .screen.menu-crop{aspect-ratio:1600/868}
+
+/* slide with its own render switch (night / day / clay) */
+.slide.multi .main.v{opacity:0;transition:opacity .5s ease,transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.slide.multi .main.v.on{opacity:1}
+.vswitch{position:absolute;top:16px;left:18px;z-index:4;display:flex;gap:4px;padding:4px;border-radius:10px;background:rgba(20,12,8,.75);backdrop-filter:blur(6px)}
+.vswitch button{font:600 .78rem var(--body);padding:6px 12px;border:0;border-radius:7px;background:transparent;color:var(--muted);cursor:pointer;transition:.15s}
+.vswitch button:hover{color:var(--cream)}
+.vswitch button.on{background:var(--cream);color:var(--ink)}
+.slide.multi .main.v:not(.on){pointer-events:none}
