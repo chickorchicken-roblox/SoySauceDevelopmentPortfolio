@@ -566,3 +566,14 @@ footer p{position:relative;z-index:1}
 .walk .tags li{font:500 .75rem var(--mono);padding:5px 10px;background:var(--paper);color:var(--ink);border-radius:3px;transform:rotate(-1deg)}
 .walk .tags li:nth-child(2n){transform:rotate(1.5deg)}
 @media (max-width:860px){.walks{grid-template-columns:1fr}}
+
+/* horror cast: one card per monster */
+.cast-grid{position:absolute;inset:0 0 70px;z-index:2;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;padding:46px 22px 18px}
+.card{display:flex;flex-direction:column;align-items:center;min-height:0;padding:10px 6px 10px;border-radius:12px;cursor:zoom-in;font:inherit;
+  background:rgba(25,8,22,.55);border:1px solid rgba(255,140,210,.2);box-shadow:0 14px 30px rgba(0,0,0,.45);transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s,border-color .25s}
+.card img{flex:1;min-height:0;width:100%;object-fit:contain}
+.card span{margin-top:8px;font:700 .8rem var(--display);color:var(--paper);white-space:nowrap}
+.card:hover{transform:translateY(-8px);border-color:rgba(255,140,210,.6);box-shadow:0 20px 40px rgba(0,0,0,.5),0 0 30px rgba(255,90,190,.25)}
+.slide.cast.on .card{animation:cardIn .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 70ms)}
+@keyframes cardIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@media (max-width:860px){.cast-grid{grid-template-columns:repeat(7,120px);overflow-x:auto;padding:46px 16px 14px;scroll-snap-type:x mandatory}.card{scroll-snap-align:start}}

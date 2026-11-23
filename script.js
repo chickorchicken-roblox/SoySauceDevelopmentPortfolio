@@ -231,7 +231,10 @@
       if (ev.key === 'ArrowRight') show(idx + 1);
     });
     var sx = null, stage = $('.stage', sc);
-    stage.addEventListener('touchstart', function (ev) { sx = ev.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchstart', function (ev) {
+      // the cast row scrolls sideways on phones, so swiping there shouldn't change the set
+      sx = ev.target.closest('.cast-grid') ? null : ev.touches[0].clientX;
+    }, { passive: true });
     stage.addEventListener('touchend', function (ev) {
       if (sx === null) return;
       var dx = ev.changedTouches[0].clientX - sx; sx = null;
@@ -241,6 +244,16 @@
       im.addEventListener('click', function () {
         if (!viewer.showModal) return;
         viewerImg.src = im.src; viewerImg.alt = im.alt;
+        viewer.classList.add('img');
+        viewer.showModal();
+      });
+    });
+    // horror cast cards open their monster full size
+    $$('.slide.cast .card', sc).forEach(function (card) {
+      card.addEventListener('click', function () {
+        if (!viewer.showModal) return;
+        var im = $('img', card);
+        viewerImg.src = card.dataset.zoom; viewerImg.alt = im.alt;
         viewer.classList.add('img');
         viewer.showModal();
       });
