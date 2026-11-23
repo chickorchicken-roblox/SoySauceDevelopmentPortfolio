@@ -688,3 +688,22 @@ footer .legal-links{position:relative;z-index:1}
   .apply-form{grid-template-columns:1fr}
   .subpage .nav nav a:not(.btn){display:none}
 }
+
+/* "Reviews & Promos": the featured tab in every nav */
+.nav nav a.nav-feature{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-weight:600;font-size:.9rem;
+  color:var(--amber);background:rgba(242,165,65,.12);border:1.5px solid rgba(242,165,65,.6);transition:background .2s,color .2s,border-color .2s}
+.nav nav a.nav-feature:hover{background:var(--amber);color:var(--ink);border-color:var(--amber)}
+.nav-feature i{width:7px;height:7px;border-radius:50%;background:#5bd16a;box-shadow:0 0 8px #5bd16a;animation:pulse 2s infinite}
+@media (max-width:860px){ .nav nav a.nav-feature{display:inline-flex} }
+@media (max-width:520px){ .nav nav a.nav-feature ~ .btn.small{display:none} .nav nav a.nav-feature{font-size:.85rem;padding:7px 12px} }
+
+/* featured order ticket: Reviews & Promos gets its own full-width row */
+.order{max-width:820px}
+.ticket.featured{grid-column:1 / -1;background:var(--red);color:#fff;box-shadow:0 5px 0 var(--red-dk),0 16px 30px rgba(0,0,0,.45);padding:16px 18px 14px}
+.ticket.featured:hover{box-shadow:0 8px 0 var(--red-dk),0 22px 36px rgba(0,0,0,.5)}
+.ticket.featured:active{box-shadow:0 2px 0 var(--red-dk)}
+.ticket.featured svg{stroke:#fff;width:34px;height:34px}
+.ticket.featured b{font-size:1.6rem}
+.ticket.featured span{color:rgba(255,255,255,.85);font-size:.85rem}
+.ticket.featured em{color:#fff;border-top-color:rgba(255,255,255,.35)}
+@media (max-width:860px){ .subpage .nav nav a.nav-feature{display:inline-flex} }
