@@ -8,7 +8,7 @@
      private Gumroad link after you accept their application.
   ------------------------------------------------------------------- */
   var GUMROAD = {
-    review: ''   // e.g. 'https://yourname.gumroad.com/l/game-review'
+    review: 'https://soysaucedevelopment.gumroad.com/l/HonestGameReview'
   };
   var EMAIL = 'contact@soysaucedev.com';
 
