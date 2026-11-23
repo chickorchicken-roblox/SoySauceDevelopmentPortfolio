@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop &amp; Prices | SoySauceDevelopment</title>
+  <meta name="description" content="Order an honest game review video, apply for a promotional video, or commission Roblox maps, UI, SFX and models from SoySauceDevelopment.">
+  <meta name="theme-color" content="#140c08">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍶</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="subpage">
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav solid">
+    <a href="index.html" class="logo">
+      <svg viewBox="0 0 24 40" aria-hidden="true"><path d="M10 2h4l1 7H9z" fill="#c8281e"/><path d="M6 12c0-3 3-4 6-4s6 1 6 4v1H6z" fill="#c8281e"/><path d="M8 13h8v3c4 2 6 5 6 10v9q0 3-3 3H5q-3 0-3-3v-9c0-5 2-8 6-10z" fill="#3a1a0b" stroke="#efe2c8" stroke-opacity=".5"/></svg>
+      <b>soysauce<span>.dev</span></b>
+    </a>
+    <nav>
+      <a href="index.html#work">Portfolio</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#commissions">Commissions</a>
+      <a href="#how">How it works</a>
+      <a href="#contact" class="btn small">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="sub-hero">
+      <div class="wrap">
+        <p class="hand eyebrow"><i></i> orders open</p>
+        <h1 class="sub-title">Order up.</h1>
+        <p class="lead">Get an honest review of your game, a promo video, or commission maps, UI, sound effects and models made by hand.</p>
+        <div class="cta">
+          <a class="btn red" href="#reviews">Reviews &amp; promos</a>
+          <a class="btn ghost" href="#commissions">Commission prices</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS & PROMOS ============ -->
+    <section id="reviews" class="offers">
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="mono label">01 / for your game</p>
+          <h2>Reviews &amp; promos</h2>
+          <p class="lead">Two ways to get your game seen. Both videos are clearly labelled as paid, as US advertising law requires.</p>
+        </header>
+
+        <div class="offer-grid">
+          <article class="offer">
+            <div class="offer-top">
+              <p class="mono label">video post</p>
+              <h3>Honest Game Review</h3>
+              <p class="price"><b>$15</b><span>one video</span></p>
+            </div>
+            <p>I play your game and post an honest review video. You're paying for my time and my real opinion.</p>
+            <ul class="checks">
+              <li>An honest, unscripted review video posted on my channels</li>
+              <li>Clearly labelled as a paid review</li>
+              <li>I'll fix factual mistakes (wrong name, wrong feature)</li>
+            </ul>
+            <div class="fine">
+              <b>Please read first:</b> the review can be positive, mixed or negative. Paying does <u>not</u> guarantee a positive review, views, players or any other result.
+            </div>
+            <label class="agree"><input type="checkbox" data-agree="review"> <span>I've read and agree to the <a href="terms.html">Terms</a> and <a href="refunds.html">Refund Policy</a>, and I understand the review may not be positive.</span></label>
+            <a class="btn red buy" data-buy="review" href="#" aria-disabled="true">Buy review · $15</a>
+            <p class="buy-note mono" data-note="review"></p>
+          </article>
+
+          <article class="offer">
+            <div class="offer-top">
+              <p class="mono label">apply first</p>
+              <h3>Promotional Video</h3>
+              <p class="price"><b>$30</b><span>30–60 seconds</span></p>
+            </div>
+            <p>A 30–60 second video promoting your game and the things you want to show off. Apply first, and I'll only take on games I'm happy to promote.</p>
+            <ul class="checks">
+              <li>Covers the details you choose to highlight</li>
+              <li>Clearly labelled as an ad / sponsored</li>
+              <li>Applying is free. You only pay if I accept.</li>
+            </ul>
+            <div class="fine">
+              <b>How it works:</b> apply below. If I accept, I'll send you a private payment link. If I decline, you pay nothing.
+            </div>
+            <a class="btn ghost" href="#apply">Apply for a promo</a>
+          </article>
+        </div>
+
+        <!-- promo application -->
+        <div id="apply" class="apply">
+          <div class="apply-head">
+            <p class="mono label">promo application</p>
+            <h3>Tell me about your game</h3>
+            <p>This opens an email to me with your answers filled in. Nothing is saved on this site.</p>
+          </div>
+          <form class="apply-form" novalidate>
+            <label>Your name or username<input name="name" required maxlength="80" autocomplete="nickname"></label>
+            <label>Contact (email or Discord)<input name="contact" required maxlength="120"></label>
+            <label>Game name<input name="game" required maxlength="120"></label>
+            <label>Game link<input name="link" type="url" required maxlength="300" placeholder="https://www.roblox.com/games/…"></label>
+            <label class="wide">What do you want the video to promote?<textarea name="promote" required maxlength="1500" rows="4" placeholder="New update, a feature, an event, the whole game…"></textarea></label>
+            <label class="wide">Anything else? (deadline, style, must-show moments)<textarea name="extra" maxlength="1000" rows="3"></textarea></label>
+            <label class="agree wide"><input type="checkbox" name="age" required> <span>I'm 18 or older, or I have a parent or guardian's permission.</span></label>
+            <label class="agree wide"><input type="checkbox" name="terms" required> <span>I've read the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a>.</span></label>
+            <button class="btn red" type="submit">Send application</button>
+            <p class="form-msg mono" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMMISSIONS ============ -->
+    <section id="commissions" class="commissions">
+      <span class="kanji" aria-hidden="true">品書</span>
+      <div class="wrap">
+        <header class="sec-head">
+          <p class="mono label">02 / commission me</p>
+          <h2>The menu</h2>
+          <p class="lead">Standard rates. Every job is <b>negotiable</b>, so message me and we'll agree the price and scope before anything starts. <a href="index.html#work">See my work →</a></p>
+        </header>
+
+        <div class="boards-menu">
+          <article class="menu-board">
+            <h3>Maps</h3>
+            <ul class="prices">
+              <li><span>Small map · low poly / studs</span><i></i><b>$15 <em>or R$3,000</em></b></li>
+              <li><span>Larger map with complexity</span><i></i><b>$25 <em>or R$4,500</em></b></li>
+              <li class="mod"><span>Medium poly with textures</span><i></i><b>+25%</b></li>
+            </ul>
+          </article>
+
+          <article class="menu-board">
+            <h3>UI design</h3>
+            <ul class="prices">
+              <li><span>Full UI overhaul</span><i></i><b>$35 <em>or R$5,500</em></b></li>
+            </ul>
+            <p class="board-note hand">immersive animations, high-quality layering and a strong leitmotif</p>
+          </article>
+
+          <article class="menu-board">
+            <h3>SFX design</h3>
+            <ul class="prices">
+              <li><span>Per second of audio</span><i></i><b>$0.25 <em>or R$35</em></b></li>
+            </ul>
+            <p class="board-note hand">seconds are rounded down, so 4.9s counts as 4s</p>
+          </article>
+
+          <article class="menu-board">
+            <h3>Models</h3>
+            <ul class="prices">
+              <li><span>Low poly / studs model</span><i></i><b>$3 <em>each</em></b></li>
+              <li><span>Bundle of 10 low poly / studs</span><i></i><b>$25 <em>save $5</em></b></li>
+              <li class="mod"><span>Textured medium poly</span><i></i><b>+25%</b></li>
+            </ul>
+          </article>
+        </div>
+        <p class="hand more-soon">more services coming soon ↗</p>
+
+        <!-- quick estimator -->
+        <div class="estimator">
+          <div class="est-head">
+            <p class="mono label">quick estimate</p>
+            <h3>What would it cost?</h3>
+            <p>A rough number before you message me. The final price is agreed together.</p>
+          </div>
+          <div class="est-grid">
+            <div class="est">
+              <label for="est-sfx">SFX length (seconds)</label>
+              <input id="est-sfx" type="number" min="0" step="0.1" value="10" inputmode="decimal">
+              <p class="est-out"><b data-out="sfx-usd">$2.50</b><span data-out="sfx-rbx">or R$350</span></p>
+              <p class="est-sub mono" data-out="sfx-note">10 seconds billed</p>
+            </div>
+            <div class="est">
+              <label for="est-models">Number of models</label>
+              <input id="est-models" type="number" min="0" step="1" value="10" inputmode="numeric">
+              <label class="agree small-check"><input id="est-tex" type="checkbox"> <span>Textured medium poly (+25%)</span></label>
+              <p class="est-out"><b data-out="mdl-usd">$25.00</b></p>
+              <p class="est-sub mono" data-out="mdl-note">1 bundle of 10</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how" class="how">
+      <div class="wrap">
+        <header class="sec-head center">
+          <p class="mono label">03 / how ordering works</p>
+          <h2>No surprises</h2>
+        </header>
+        <ol class="steps-row">
+          <li><b>1</b><h4>Message me</h4><p>Tell me what you need by email or Discord.</p></li>
+          <li><b>2</b><h4>Agree in writing</h4><p>We agree the scope, price, revisions and an estimated date before I start.</p></li>
+          <li><b>3</b><h4>Pay safely</h4><p>Pay through Gumroad, or in Robux using Roblox's own features. I never see your card details.</p></li>
+          <li><b>4</b><h4>Get your files</h4><p>I deliver, you review, and the work becomes yours once it's fully paid.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <div class="wrap">
+        <p class="mono label">04 / get in touch</p>
+        <h2 class="huge">Let's talk.</h2>
+        <p class="lead">Commissions start with a message. Tell me what you need, your budget and your deadline.</p>
+        <div class="cta center">
+          <a class="btn red" href="mailto:looftstop@gmail.com?subject=Commission%20request">Email me</a>
+          <button class="btn discord" type="button" data-copy="_juryisout">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.6 5.3A17 17 0 0 0 15.4 4l-.5 1.1a15.6 15.6 0 0 0-5.8 0L8.6 4a17 17 0 0 0-4.2 1.3C1.7 9.3 1 13.2 1.3 17a17 17 0 0 0 5.2 2.6l1.1-1.8a11 11 0 0 1-1.7-.8l.4-.3a12.2 12.2 0 0 0 11.4 0l.4.3c-.5.3-1.1.6-1.7.8l1.1 1.8a17 17 0 0 0 5.2-2.6c.4-4.4-.7-8.3-3.1-11.7zM8.5 14.7c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1zm7 0c-1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1 1.9 1 1.9 2.1-.8 2.1-1.9 2.1z"/></svg>
+            <span>Discord: <b>_juryisout</b></span>
+          </button>
+        </div>
+        <p class="mono contact-line">looftstop@gmail.com · Discord _juryisout</p>
+        <p class="copied mono" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sub-foot">
+    <nav class="legal-links" aria-label="Legal">
+      <a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="refunds.html">Refund Policy</a><a href="index.html">Portfolio</a>
+    </nav>
+    <p>© <span class="year"></span> SoySauceDevelopment · California, USA · Payments by Gumroad</p>
+  </footer>
+
+  <script src="shop.js"></script>
+</body>
+</html>
