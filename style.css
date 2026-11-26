@@ -770,3 +770,7 @@ footer .legal-links{position:relative;z-index:1}
   .coach-cta-arrow{grid-row:2 / 4;grid-column:2}
 }
 @media (prefers-reduced-motion:reduce){ .coach-cta{animation:none} }
+
+.coach-price{display:flex;align-items:baseline;gap:10px;margin-top:18px}
+.coach-price b{font:900 3.2rem/1 var(--display);color:var(--paper)}
+.coach-price span{font-family:var(--mono);font-size:.85rem;color:var(--muted)}
