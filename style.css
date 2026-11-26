@@ -774,3 +774,24 @@ footer .legal-links{position:relative;z-index:1}
 .coach-price{display:flex;align-items:baseline;gap:10px;margin-top:18px}
 .coach-price b{font:900 3.2rem/1 var(--display);color:var(--paper)}
 .coach-price span{font-family:var(--mono);font-size:.85rem;color:var(--muted)}
+
+/* coaching button: soy sauce instead of the flashing amber 3D look */
+.coach-cta{animation:none;color:var(--cream);margin-bottom:22px;
+  background:linear-gradient(180deg,#3a1708 0%,#2a1207 45%,#1a0a03 100%);
+  border:2px solid #8a3f17;
+  box-shadow:0 18px 36px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,200,150,.12),inset 0 -10px 24px rgba(0,0,0,.35);
+  transition:transform .2s,border-color .2s,box-shadow .2s}
+.coach-cta:hover{transform:translateY(-2px);border-color:var(--amber);box-shadow:0 22px 44px rgba(0,0,0,.55),0 0 30px rgba(242,165,65,.18),inset 0 1px 0 rgba(255,200,150,.12)}
+.coach-cta:active{transform:translateY(1px);box-shadow:0 10px 20px rgba(0,0,0,.5)}
+/* glossy streak across the top, like light on the soy */
+.coach-cta::before{content:"";position:absolute;left:18px;right:38%;top:7px;height:3px;border-radius:3px;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,215,175,.45),rgba(255,215,175,0))}
+/* soy dripping off the bottom edge */
+.coach-cta::after{content:"";position:absolute;left:22px;right:22px;top:100%;height:26px;margin-top:-2px;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='26' viewBox='0 0 160 26'%3E%3Cpath d='M0 0H160V3H132Q131 3 131 12A7 7 0 0 1 117 12Q117 3 116 3H78Q77 3 77 8A4 4 0 0 1 69 8Q69 3 68 3H32Q31 3 31 14A6 6 0 0 1 19 14Q19 3 18 3H0Z' fill='%231a0a03'/%3E%3Cellipse cx='22' cy='13' rx='1.6' ry='2.6' fill='%23fff' opacity='.35'/%3E%3Cellipse cx='120' cy='11' rx='1.8' ry='3' fill='%23fff' opacity='.35'/%3E%3C/svg%3E") repeat-x 0 0/160px 26px}
+.coach-cta-text{color:var(--paper)}
+.coach-cta-text b{color:var(--amber)}
+.coach-cta-meta{color:var(--muted)}
+.coach-cta-arrow{color:var(--amber)}
+@media (prefers-reduced-motion:reduce){ .coach-cta{transition:none} }
+.coach-cta::after{height:34px;margin-top:-4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='34' viewBox='0 0 180 34'%3E%3Cpath d='M0 0H180V4H150Q149 4 149 17A8 8 0 0 1 133 17Q133 4 132 4H90Q89 4 89 10A5 5 0 0 1 79 10Q79 4 78 4H38Q37 4 37 22A7 7 0 0 1 23 22Q23 4 22 4H0Z' fill='%231a0a03' stroke='%238a3f17' stroke-width='2'/%3E%3Cellipse cx='27' cy='22' rx='1.8' ry='3' fill='%23ffd9b0' opacity='.5'/%3E%3Cellipse cx='138' cy='17' rx='2' ry='3.2' fill='%23ffd9b0' opacity='.5'/%3E%3Cellipse cx='82' cy='10' rx='1.2' ry='2' fill='%23ffd9b0' opacity='.45'/%3E%3C/svg%3E") repeat-x 0 0/180px 34px}
