@@ -146,7 +146,7 @@
   }
 
   /* ---------- reveal + counters ---------- */
-  var revealSel = '.sec-head, .frame, .callout, .case-info, .case .tags, .tile, .map, .showcase, .roar, .pack, .range, .facts, .ingredients, .post, .contact .huge, .contact .lead, .table, .contact .cta';
+  var revealSel = '.frame, .contact .table';
   $$(revealSel).forEach(function (n) { n.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
